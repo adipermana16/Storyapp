@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="manifest" href="app.webmanifest" />
+  <title>Story App</title>
+</head>
+
+<body>
+  <header>
+    <button id="skip-link" class="skip-link">Menuju Konten Utama</button>
+
+    <div class="main-header container">
+      <a class="brand-name__link" href="#/">
+        <span class="brand-name__link__text">App Story</span>
+      </a>
+
+      <nav id="navigation-drawer" class="navigation-drawer">
+        <ul id="nav-list" class="nav-list"></ul>
+      </nav>
+
+      <button id="drawer-button" class="drawer-button">☰</button>
+    </div>
+  </header>
+
+  <main tabIndex="-1" id="main-content" class="main-content"></main>
+</body>
+
+</html>

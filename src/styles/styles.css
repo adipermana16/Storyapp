@@ -1,0 +1,347 @@
+:root {
+    --primary-color: #4f46e5;
+    --primary-text-color: #ffffff;
+    --primary-hover-color: #4338ca;
+    --primary-shadow-color: rgba(99, 102, 241, 0.5);
+    --secondary-color: #facc15;
+    --secondary-text-color: #1e293b;
+    --border-color: #d1d5db;
+    --text-dark: #111827;
+    --text-gray: #6b7280;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-out-down {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 350ms;
+    animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(root) {
+    animation-name: fade-out-down;
+}
+
+::view-transition-new(root) {
+    animation-name: fade-in-up;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: var(--text-dark);
+    line-height: 1.75;
+}
+
+.skip-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 8px 16px;
+    font-weight: bold;
+    transform: translateY(-100%);
+    transition: transform 0.2s ease-in-out;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Layout Container */
+.container {
+    max-width: 1024px;
+    margin: auto;
+    padding: 0 1.5rem;
+}
+
+/* Interactive Elements */
+a,
+button {
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+a:hover,
+button:hover {
+    color: var(--primary-hover-color);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-shadow-color);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--primary-text-color);
+}
+
+/* Accessibility Focus */
+:focus-visible {
+    outline: 3px dashed var(--secondary-color);
+    outline-offset: 3px;
+}
+
+/* Form Layout */
+.form-group+.form-group {
+    margin-top: 1.5rem;
+}
+
+.form-buttons {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Loader */
+.loader {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.loader::after {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 5px solid #e2e8f0;
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Header */
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 6px var(--shadow-medium);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-name__link {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-text-color);
+    letter-spacing: 1px;
+}
+
+/* Navigation */
+.navigation-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background-color: var(--secondary-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 2rem 1.25rem;
+    box-shadow: 2px 0 8px var(--shadow-light);
+    z-index: 9999;
+}
+
+.navigation-drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.nav-list {
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-list a,
+.nav-list button {
+    color: var(--text-dark);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.nav-list a:hover,
+.nav-list button:hover {
+    background-color: var(--primary-hover-color);
+    color: var(--primary-text-color);
+}
+
+/* Main Content */
+.main-content {
+    min-height: 70vh;
+    padding: 2rem 0;
+    animation: fade-in-up 0.4s ease;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .navigation-drawer {
+        width: 220px;
+    }
+}
+
+@media (min-width: 769px) {
+    .navigation-drawer {
+        position: static;
+        transform: none;
+        width: auto;
+        height: auto;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 1.5rem;
+        margin-top: 0;
+    }
+
+    .drawer-button {
+        display: none;
+    }
+}
+
+.new-form__location__map__container,
+.new-form__location__map {
+    height: 400px;
+    position: relative;
+}
+
+.new-form__location__map__container {
+    background-color: darkgray;
+}
+
+.new-form__location__lat-lng {
+    margin: 16px 0 8px;
+    display: flex;
+    gap: 10px;
+}

@@ -1,0 +1,19 @@
+{
+  "id": "/#/",
+  "start_url": "/#/",
+  "scope": "/",
+  "name": "App Story",
+  "short_name": "App Story",
+  "description": "Aplikasi berbagi cerita dicoding",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#C599B6",
+  "icons": [
+    {
+        "src": "images/logo.png",
+        "type": "image/png",
+        "sizes": "144x144",
+        "purpose": "any"
+    }
+  ]
+}
