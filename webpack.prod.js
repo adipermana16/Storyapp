@@ -1,4 +1,4 @@
-const path = require("path"); // <-- tambahkan ini
+const path = require("path");
 const common = require("./webpack.common.js");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -7,6 +7,11 @@ const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
+  output: {
+    path: path.resolve(__dirname, 'dist'), // output folder
+    filename: 'bundle.js', // name of the output file
+    clean: true, // optional: cleans the output folder before emit
+  },
   module: {
     rules: [
       {
